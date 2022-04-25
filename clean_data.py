@@ -20,6 +20,7 @@ with open('yelp_dataset-2/yelp_academic_dataset_business.json', mode="r", encodi
                 temp_dict = {"business_id": business_id, "name": name, "stars": stars, "review_count": review_count}
 
                 json.dump(temp_dict,file_write)
+                file_write.write("\n")
 
         except Exception as e:
             print(e)
