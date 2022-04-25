@@ -2,4 +2,4 @@ yelp_dataset.tar
 yelp_dataset-2.tar
 yelp_dataset-2/
 *.csv
-*.json
+*_clean.json
