@@ -19,8 +19,12 @@ means = defaultdict(float)
 stds = defaultdict(float)
 id2Name = defaultdict(str)
 thumbDown = defaultdict(int)
+reviewCount = defaultdict(int)
+rating = defaultdict(float)
 for i in business:
     id2Name[i["business_id"]] = i["name"]
+    reviewCount[i["name"]] = i["review_count"]
+    rating[i["name"]] = i["stars"]
 for i in review:
     sums[i["user_id"]].append(i["stars"])
     counts[i["user_id"]] += 1
@@ -34,4 +38,4 @@ for i in review:
         thumbDown[id2Name[i["business_id"]]] += 1
 with open('test.csv', 'w') as f:
     for key in thumbUp.keys():
-        f.write("%s,%d,%d\n"%(key,thumbUp[key],thumbDown[key]))
+        f.write("%s,%d,%d,%d,%d\n"%(key,thumbUp[key],thumbDown[key],reviewCount[key],rating[key]))
