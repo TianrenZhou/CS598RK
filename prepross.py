@@ -18,6 +18,7 @@ counts = defaultdict(int)
 means = defaultdict(float)
 stds = defaultdict(float)
 id2Name = defaultdict(str)
+thumbDown = defaultdict(int)
 for i in business:
     id2Name[i["business_id"]] = i["name"]
 for i in review:
@@ -29,6 +30,8 @@ for i in user:
 for i in review:
     if i["stars"] >= means[i["user_id"]] + stds[i["user_id"]]:
         thumbUp[id2Name[i["business_id"]]] += 1
+    if i["stars"] < means[i["user_id"]] - stds[i["user_id"]]:
+        thumbDown[id2Name[i["business_id"]]] += 1
 with open('test.csv', 'w') as f:
     for key in thumbUp.keys():
-        f.write("%s,%d\n"%(key,thumbUp[key]))
+        f.write("%s,%d,%d\n"%(key,thumbUp[key],thumbDown[key]))
