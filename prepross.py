@@ -27,9 +27,9 @@ for i in business:
     rating[i["business_id"]] = i["stars"]
 for i in review:
     sums[i["user_id"]].append(i["stars"])
-    counts[i["user_id"]] += 1
+    ##counts[i["user_id"]] += 1
 for i in user:
-    means[i["user_id"]] = sum(sums[i["user_id"]]) / counts[i["user_id"]]
+    means[i["user_id"]] = statistics.mean(sums[i["user_id"]])
     stds[i["user_id"]] = statistics.pstdev(sums[i["user_id"]])
 for i in review:
     if i["stars"] > means[i["user_id"]] + stds[i["user_id"]]:
