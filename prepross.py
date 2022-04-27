@@ -38,4 +38,4 @@ for i in review:
         thumbDown[id2Name[i["business_id"]]] += 1
 with open('test.csv', 'w') as f:
     for key in thumbUp.keys():
-        f.write("%s;%d;%d;%d;%d\n"%(key,thumbUp[key],thumbDown[key],reviewCount[key],rating[key]))
+        f.write("%s;%d;%d;%d;%f\n"%(key,thumbUp[key],thumbDown[key],reviewCount[key],rating[key]))
