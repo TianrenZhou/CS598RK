@@ -32,9 +32,9 @@ for i in user:
     means[i["user_id"]] = statistics.mean(sums[i["user_id"]])
     stds[i["user_id"]] = statistics.pstdev(sums[i["user_id"]])
 for i in review:
-    if i["stars"] > means[i["user_id"]] + stds[i["user_id"]]:
+    if i["stars"] > means[i["user_id"]] + stds[i["user_id"]] or i["stars"] == 5:
         thumbUp[i["business_id"]] += 1
-    if i["stars"] < means[i["user_id"]] - stds[i["user_id"]]:
+    if i["stars"] < means[i["user_id"]] - stds[i["user_id"]] or i["stars"] == 1:
         thumbDown[i["business_id"]] += 1
 with open('test.csv', 'w') as f:
     for key in id2Name.keys():
