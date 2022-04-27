@@ -32,7 +32,7 @@ for i in user:
     means[i["user_id"]] = sum(sums[i["user_id"]]) / counts[i["user_id"]]
     stds[i["user_id"]] = statistics.pstdev(sums[i["user_id"]])
 for i in review:
-    if i["stars"] >= means[i["user_id"]] + stds[i["user_id"]]:
+    if i["stars"] > means[i["user_id"]] + stds[i["user_id"]]:
         thumbUp[i["business_id"]] += 1
     if i["stars"] < means[i["user_id"]] - stds[i["user_id"]]:
         thumbDown[i["business_id"]] += 1
