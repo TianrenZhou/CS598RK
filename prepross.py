@@ -34,6 +34,7 @@ for i in user:
 for i in review:
     if i["stars"] > means[i["user_id"]] + stds[i["user_id"]] or i["stars"] == 5:
         thumbUp[i["business_id"]] += 1
+        continue
     if i["stars"] < means[i["user_id"]] - stds[i["user_id"]] or i["stars"] == 1:
         thumbDown[i["business_id"]] += 1
 with open('test.csv', 'w') as f:
