@@ -23,10 +23,10 @@ reviewCount = defaultdict(int)
 rating = defaultdict(float)
 for i in business:
     id2Name[i["business_id"]] = i["name"]
-    reviewCount[i["business_id"]] = i["review_count"]
     rating[i["business_id"]] = i["stars"]
 for i in review:
     sums[i["user_id"]].append(i["stars"])
+    reviewCount[i["business_id"]] += 1
     ##counts[i["user_id"]] += 1
 for i in user:
     means[i["user_id"]] = statistics.mean(sums[i["user_id"]])
